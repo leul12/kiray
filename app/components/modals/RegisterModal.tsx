@@ -6,7 +6,6 @@ import { FaSquareFacebook } from "react-icons/fa6";
 import {FcGoogle} from "react-icons/fc"
 import{FieldValues,SubmitHandler,useForm} from 'react-hook-form';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
-import { error } from 'console';
 import Modal from './modal';
 import Heading from '../Heading';
 import Input from '../inputs/Input';
