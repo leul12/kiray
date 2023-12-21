@@ -20,34 +20,38 @@ export const authOptions: AuthOptions = {
         }),    
         CredentialsProvider({
             name: 'credentials',
-            credentials:{
-                email:{label:'email',type:'text'},
-                password:{label:'password',type:'password'},
+            credentials: {
+              email: { label: 'email', type: 'text' },
+              password: { label: 'password', type: 'password' }
             },
-            async  authorize(credentials) {
-                if(!credentials?.email || !credentials?.password){
-                    throw new Error('Invalid Credentials');
+            async authorize(credentials) {
+              if (!credentials?.email || !credentials?.password) {
+                throw new Error('Invalid credentials');
+              }
+      
+              const user = await prisma.user.findUnique({
+                where: {
+                  emal: credentials.email
                 }
-                const user = await prisma.user.findUnique({
-                    where:{
-                        emal: credentials.email
-                    }
-                });
-                if(!user|| !user?.hashedPassword){
-                    throw new Error ('invalid Authorization')
-                }
-                const isCorrectPassword = await bcrypt.compare(
-                    credentials.password,
-                    user.hashedPassword
-                )
-                if(!isCorrectPassword){
-                    throw new Error ('Invalid Credentials');
-                }
-
-                return user;
+              });
+      
+              if (!user || !user?.hashedPassword) {
+                throw new Error('Invalid credentials');
+              }
+      
+              const isCorrectPassword = await bcrypt.compare(
+                credentials.password,
+                user.hashedPassword
+              );
+      
+              if (!isCorrectPassword) {
+                throw new Error('Invalid credentials');
+              }
+      
+              return user;
             }
-        })    
-    ],
+          })
+        ],
     pages:{
         signIn:'/',
     },
