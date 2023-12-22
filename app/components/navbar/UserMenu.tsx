@@ -5,10 +5,10 @@ import MenuItem from "./menuItem";
 import { AiOutlineMenu } from 'react-icons/ai';
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { User } from "next-auth";
 import { signOut } from "next-auth/react";
+import { SafeUSer } from "@/app/types";
 interface UserMenuProps {
-    currentUser?: User | null
+    currentUser?: SafeUSer | null
 }
 const UserMenu: React.FC<UserMenuProps> = ({
     currentUser
