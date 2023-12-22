@@ -31,7 +31,7 @@ export const authOptions: AuthOptions = {
       
               const user = await prisma.user.findUnique({
                 where: {
-                  emal: credentials.email
+                  email: credentials.email
                 }
               });
       
