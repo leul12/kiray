@@ -1,7 +1,6 @@
 import NextAuth,{AuthOptions} from "next-auth"
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/app/libs/prsimadb"
-import Facebook from "next-auth/providers/facebook";
 import GoogleProvider from "next-auth/providers/google";
 import  CredentialsProvider  from "next-auth/providers/credentials";
 import bcrypt from "bcrypt"
@@ -10,10 +9,6 @@ import bcrypt from "bcrypt"
 export const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma),
     providers:[
-        Facebook({
-            clientId: process.env.FACEBOOK_CLIENT_ID as string,
-            clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
-        }),
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,

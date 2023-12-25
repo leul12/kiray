@@ -9,7 +9,6 @@ import {
     useForm
 } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import { FaSquareFacebook } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 
 import useRegisterModal from "@/app/hooks/useRegisterModal";
@@ -101,12 +100,6 @@ const LoginModal = () => {
                 label="Continue with Google"
                 icon={FcGoogle}
                 onclick={() => signIn('google')}
-            />
-            <Button
-                outline
-                label="Continue with FaceBook"
-                icon={FaSquareFacebook}
-                onclick={() => signIn('FaceBook')}
             />
             <div className="
       text-neutral-500 text-center mt-4 font-light">

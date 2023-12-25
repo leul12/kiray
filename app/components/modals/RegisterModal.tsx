@@ -1,7 +1,6 @@
 'use client';
 
 import axios from "axios";
-import { FaSquareFacebook } from "react-icons/fa6";
 import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
@@ -93,12 +92,6 @@ const RegisterModal = () => {
                 label="Continue with Google"
                 icon={FcGoogle}
                 onclick={() => signIn('google')}
-            />
-            <Button
-                outline
-                label="Continue with FaceBook"
-                icon={FaSquareFacebook}
-                onclick={() => signIn('FaceBook')}
             />
             <div
                 className="
