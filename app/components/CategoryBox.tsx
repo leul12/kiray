@@ -1,5 +1,6 @@
 'use client'
 import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
 import { IconType } from "react-icons"
 interface CAtegoryBoxProps{
     icon:IconType;
@@ -14,6 +15,9 @@ interface CAtegoryBoxProps{
 })=>{
     const router = useRouter();
     const params= useSearchParams();
+    const handleClick = useCallback(()=>{
+
+    },[]);
     return (
         <div className={`flex flex-col justify-center items-center gap-2 p-3 border-b-2 hover:text-neutral-800 transition cursor-pointer
         ${selected ? 'border-b-neutral-800':'border-transparent'} 
