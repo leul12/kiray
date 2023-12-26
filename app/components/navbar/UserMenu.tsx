@@ -4,9 +4,11 @@ import Avatar from "../Avatar";
 import MenuItem from "./menuItem";
 import { AiOutlineMenu } from 'react-icons/ai';
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useRentalModal from "@/app/hooks/useRentModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { signOut } from "next-auth/react";
 import { SafeUSer } from "@/app/types";
+import useRentModal from "@/app/hooks/useRentModal";
 interface UserMenuProps {
     currentUser?: SafeUSer | null
 }
@@ -16,18 +18,23 @@ const UserMenu: React.FC<UserMenuProps> = ({
     const registermodal = useRegisterModal();
     const loginModal = useLoginModal();
     const [isOpen, setIsOpen] = useState(false);
-
+    const rentModal = useRentModal();
     const toggleMenu = useCallback(() => {
         setIsOpen((value) => !value);
     }, []);
-
+    const onRent = useCallback(() =>{
+        if(!currentUser){
+            return loginModal.onOpen();
+        }
+        rentModal.onOpen();
+    },[currentUser,loginModal,rentModal]);
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
-                <div
+                <div onClick={onRent}
                     className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
                 >
-                    Bet kiray feligewal
+                    kiray My Home
                 </div>
                 <div
                     onClick={toggleMenu}
@@ -61,7 +68,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                             label="My Properties"
                         />
                         <MenuItem
-                            onClick={()=>{}}
+                            onClick={rentModal.onOpen}
                             label="Kiray my home"
                         />
                         <hr />
@@ -90,3 +97,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
 }
 
 export default UserMenu;
+function useRantModal() {
+    throw new Error("Function not implemented.");
+}
+
