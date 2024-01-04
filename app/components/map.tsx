@@ -6,7 +6,7 @@ import "leaflet/dist/leaflet.css";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
-//@ts-ignore
+        //@ts-ignore
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -22,12 +22,12 @@ const Map:React.FC<MapProps>=({
     center
 })=>{
     return(
-        //@ts-ignore
-        <MapContainer>
-            center={center as L.LatLngExpression || [51,-0.09]}
+
+        <MapContainer
+            center={center as L.LatLngExpression || [9.005401,38.763611]}
             zoom={center? 4:2}
             scrollWheelZoom ={false}
-            className="h-[35vh] rounded-lg"
+            className="h-[35vh] rounded-lg">
         </MapContainer>
     )
 };
