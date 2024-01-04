@@ -48,7 +48,7 @@ const RentModal = ()=>{
     const location = watch('location');
     const Map = useMemo(()=>dynamic(() => import('../map'),{
         ssr:false
-    }),[]);
+    }),[location]);
 
     const setCustomValue = (id:string, value:any)=>{
         setValue(id,value,{
@@ -87,7 +87,7 @@ const RentModal = ()=>{
                     <div key={item.label} className="col-span-1">
                         <CategoryInput
                         onClick={(category) => setCustomValue('category',category)}
-                        selected= {category==item.label}
+                        selected= {category===item.label}
                         label={item.label}
                         icon={item.icon}
                         />
@@ -106,13 +106,12 @@ const RentModal = ()=>{
                 <CountrySelect
                 value={location}
                     onChange={(value)=>setCustomValue('location',value)}
-                
                 />
                 <Map
                 center={location?.latlng}
                 />
             </div>
-        )
+        );
     }
     return (
         <Modal
