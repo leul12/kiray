@@ -9,8 +9,8 @@ import { FieldValue, FieldValues, useForm } from "react-hook-form";
 import CountrySelect from "../inputs/CountrySelect";
 import dynamic from "next/dynamic";
 import Counter from "../inputs/Counter";
-import { constants } from "buffer";
 import ImageUpload from "../inputs/ImageUpload";
+import Input from "../inputs/Input";
 
 enum STEPS{
     CATEGORY= 0,
@@ -163,6 +163,19 @@ const RentModal = ()=>{
                 <ImageUpload 
                     value={imageSrc}
                     onChange={(value)=> setCustomValue('imageSrc',value)}
+                />
+            </div>
+        )
+    }
+    if (step == STEPS.DESCRIPTION){
+        bodyContent =(
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title="How Would you describe your Property "
+                    subtitle="Try to make it short and precise"
+                />
+                <Input
+                    
                 />
             </div>
         )
